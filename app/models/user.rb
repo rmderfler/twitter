@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :inverse_followings, :class_name => "following", :foreign_key => "followed_id"
   has_many :inverse_followeds, :through => :inverse_followings, :source => :user
 
+  has_many :tweets
   #after_create :send_signup_email
   
   # def send_signup_email

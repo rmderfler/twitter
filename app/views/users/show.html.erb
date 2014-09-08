@@ -1,7 +1,18 @@
 <p>
-  <strong>Name:</strong>
+  <strong>User:</strong>
   <%= current_user.email %><br/>
 </p>
 
-<%= link_to 'Edit', edit_session_user_path(session, @user) %> |
-<%= link_to 'Delete', session_user_path(session, @user), :data => {:method => "delete"} %>
+<ul>
+  <% for following in @user.followings %>
+    <li>Following:
+      <%=h following.followed.email %>
+      (<%= link_to "remove", following, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Followers", users_path %></p>
+
+<h2>Followed by Users - inverse not working - and authorize not working</h2>
+

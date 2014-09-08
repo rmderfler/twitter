@@ -4,7 +4,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <tr><td><%= user.email %></td></tr>
+        <tr><td><%= user.email %></td><td><%= link_to "Follow", followings_path(:followed_id => user), :method => :post %></td></tr>
       </tr>
     <% end %>
   </tbody>
